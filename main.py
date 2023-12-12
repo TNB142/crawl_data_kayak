@@ -18,7 +18,6 @@ if __name__ == "__main__":
     while True:
         if c_time == set_time:
             # print(f"Do job {count}")
-            # count = count + 1
             print(f"Crawl airlines at {count} times")
             current_time = get_current_time()
             print("Crawling Time")
@@ -29,6 +28,7 @@ if __name__ == "__main__":
                     if count % 1 == 0:
                         driver.quit()
                         driver = webdriver.Firefox(options=options)#, chrome_options=chromeOptions)
+                    #Modifile link url to get another airline. In this section, I focus on Vietnam Airline cause I just crawl flight data in VietNam only.
                     url = f"https://www.vn.kayak.com/flights/{sources[i]}-{destinations[i]}/{start_date+j}?sort=bestflight_a&fs=airlines=~VN"
                     driver.get(url)
                     print("\n")
@@ -45,9 +45,9 @@ if __name__ == "__main__":
                     df.add_data(current_time,airlines,duration,total_stops,prices,time_flights)
                     df.save_data(count,save_state=True)
 
-            # Chờ 15 phút trước khi chạy lại
+            # Wait for 15 minutes before running again
             print("\nWaiting for 15 minutes before running again...")
-            time.sleep(14)  # Chờ 15 phút (15 phút * 60 giây) (Set at 14 about the delay time of code excutation)
+            time.sleep(14*60)  # Wait for 15 minutes (15 minutes * 60 seconds) (Set at 14 about the delay time of code excutation)
             print("---Resuming scraping---")
             count+=1
             driver.refresh()

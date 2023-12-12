@@ -67,6 +67,16 @@ def get_source_destination():
         print(f"{i} Source: {sources[i]}. Destination: {destinations[i]}")
     return sources, destinations
 
+def get_start_end_time():
+    start_date = np.datetime64('2023-12-21')
+    end_date = np.datetime64('2023-12-21')
+    days = end_date - start_date
+    num_days = days.item().days
+    print(f"Start_date: {start_date}")
+    print(f"End_date: {end_date}")
+    print(f"Num days scrawling: {num_days}")
+    return start_date, end_date, num_days
+
 def get_all_necessary_data(soup):
     airlines = get_airlines(soup)
     # print(airlines)
@@ -85,12 +95,14 @@ def get_all_necessary_data(soup):
     return airlines, total_stops, prices, duration, time_flight
 
 def get_couple_check_and_current_time(check_state = True):
+    #Get time start to crawl and current time
     current_time = datetime.utcnow()
     vn_timezone = pytz.timezone('Asia/Ho_Chi_Minh')
     value_transform = current_time.replace(tzinfo=pytz.utc).astimezone(vn_timezone)
     current_time = value_transform.strftime("%H:%M:%S")
     time_= datetime.strptime(current_time,"%H:%M:%S").time()
 
+    #Set time to crawl
     check = datetime.strptime('11:57:00',"%H:%M:%S").time() if check_state else time_
     # print(f"Time set up: {check}. Time current: {time_}")
     return check,time_
@@ -102,16 +114,6 @@ def get_current_time():
     current_time = value_transform.strftime("%Y-%m-%d %H:%M:%S")
     print(f"Current_datetime: {current_time}")
     return current_time
-
-def get_start_end_time():
-    start_date = np.datetime64('2023-12-21')
-    end_date = np.datetime64('2023-12-21')
-    days = end_date - start_date
-    num_days = days.item().days
-    print(f"Start_date: {start_date}")
-    print(f"End_date: {end_date}")
-    print(f"Num days scrawling: {num_days}")
-    return start_date, end_date, num_days
 
 def wait_time_count():
     check, time_ = get_couple_check_and_current_time()
