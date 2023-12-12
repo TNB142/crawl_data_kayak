@@ -59,3 +59,6 @@ _Note: Please verify and adjust the code as needed, and ensure it follows the Ma
 - **get_start_end_time():** Retrieves start_time and end_time variables. Modify it to obtain your desired data. Input format is %Y-%M-%d.
 
 _Note: Ensure you modify the functions according to your specific requirements and input formats._
+
+## References
+Special thanks to MeshalAlamr for providing the source code, which can be found at [https://github.com/MeshalAlamr/flight-price-prediction](https://github.com/MeshalAlamr/flight-price-prediction).
