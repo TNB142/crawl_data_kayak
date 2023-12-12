@@ -1,6 +1,6 @@
-# crawl_data_kayak
+# Crawl Data from KAYAK
 
-Crawling flight data from KAYAK
+This project involves crawling flight data from KAYAK. The following tasks will be performed:
 
 ## Setup Environment
 
@@ -38,7 +38,7 @@ python main.py
 
 - **Browser to Crawl:** Firefox with headless option
 - **URL:** `f"https://www.vn.kayak.com/flights/{sources[i]}-{destinations[i]}/{start_date+j}?sort=bestflight_a&fs=airlines=~VN"`, where "a&fs=airlines=~VN" filters results for only Vietnam Airlines.
-- **Set Time:** Time at which crawling begins
+- **Set Time (set_time):** Time at which crawling begins
 - **Current Time (c_time):** The current time, with the timezone set to VN.
 
 _Note: Please verify and adjust the code as needed, and ensure it follows the Markdown format._
